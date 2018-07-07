@@ -8,7 +8,7 @@ public class standaloneMain {
 
     public static void main(String[] args){
         ClassPathXmlApplicationContext classPathXmlApplicationContext =
-                new ClassPathXmlApplicationContext("src/main/WEB-INF/common.xml");
+                new ClassPathXmlApplicationContext("common.xml");
         applicationContext = classPathXmlApplicationContext;
 
     }
