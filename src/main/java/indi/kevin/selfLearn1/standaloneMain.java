@@ -1,14 +1,15 @@
 package indi.kevin.selfLearn1;
 
-import org.springframework.context.support.ClassPathXmlApplicationContext;
+import org.springframework.context.ApplicationContext;
+import org.springframework.context.support.FileSystemXmlApplicationContext;
 
 public class standaloneMain {
 
-    public static ClassPathXmlApplicationContext applicationContext;
+    public static ApplicationContext applicationContext;
 
     public static void main(String[] args){
-        ClassPathXmlApplicationContext classPathXmlApplicationContext =
-                new ClassPathXmlApplicationContext("common.xml");
+        ApplicationContext classPathXmlApplicationContext =
+                new FileSystemXmlApplicationContext("src/main/WEB-INF/common.xml");
         applicationContext = classPathXmlApplicationContext;
 
     }
