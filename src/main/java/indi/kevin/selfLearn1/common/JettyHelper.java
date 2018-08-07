@@ -1,7 +1,10 @@
 package indi.kevin.selfLearn1.common;
 
+import indi.kevin.selfLearn1.restful.endpoints.JunkHandler;
+import indi.kevin.selfLearn1.restful.endpoints.UserHandler;
 import indi.kevin.selfLearn1.servlets.HelloServlet;
 import org.eclipse.jetty.server.Server;
+import org.eclipse.jetty.server.handler.ContextHandler;
 import org.eclipse.jetty.servlet.ServletHolder;
 import org.glassfish.jersey.servlet.ServletContainer;
 import org.eclipse.jetty.servlet.ServletContextHandler;
@@ -18,6 +21,22 @@ public class JettyHelper {
         this.port = port;
         this.host = host;
     }
+
+    public void startHandler() throws Exception{
+
+        InetSocketAddress address = new InetSocketAddress(host,Integer.parseInt(port));
+        jettyServer = new Server(address);
+
+        ContextHandler contextHandler = new ContextHandler();
+        contextHandler.setContextPath("/");
+        contextHandler.setResourceBase(".");
+        contextHandler.setClassLoader(Thread.currentThread().getContextClassLoader());
+        jettyServer.setHandler(contextHandler);
+        contextHandler.setHandler(new JunkHandler());
+        jettyServer.start();
+        jettyServer.join();
+    }
+
 
     public void start(){
 
