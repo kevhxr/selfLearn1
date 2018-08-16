@@ -1,0 +1,9 @@
+package indi.kevin.selfLearn1.AOPStudy.fullAutoAOP;
+
+public interface  UserService {
+
+    public void addUser();
+    public void updateUser();
+    public void deleteUser();
+
+}
