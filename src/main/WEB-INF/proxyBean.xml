@@ -10,7 +10,7 @@
 
     <!--optimize: force to use cglib-->
     <bean id="proxyServiceId" class="org.springframework.aop.framework.ProxyFactoryBean">
-        <property name="interfaces" value="indi.kevin.selfLearn1.AOPStudy.halfAutoProxy.UserService"></property>
+        <property name="interfaces" value="indi.kevin.selfLearn1.AOPStudy.interfaces.UserService"></property>
         <property name="target" ref="userServiceId"></property>
         <property name="interceptorNames" value="myAspectId"></property>
         <property name="optimize" value="true"></property>

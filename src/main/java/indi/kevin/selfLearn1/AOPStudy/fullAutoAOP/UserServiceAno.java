@@ -1,8 +1,10 @@
-package indi.kevin.selfLearn1.AOPStudy.halfAutoProxy;
+package indi.kevin.selfLearn1.AOPStudy.fullAutoAOP;
 
 import indi.kevin.selfLearn1.AOPStudy.interfaces.UserService;
+import org.springframework.stereotype.Service;
 
-public class UserServiceImpl implements UserService {
+@Service("userServiceAnoId")
+public class UserServiceAno implements UserService {
     @Override
     public void addUser() {
         System.out.println("add user");
@@ -11,12 +13,11 @@ public class UserServiceImpl implements UserService {
     @Override
     public String updateUser(String userName) {
         System.out.println("update user");
-        return userName;
+        return "updated to " + userName;
     }
 
     @Override
     public void deleteUser() {
         System.out.println("delete user");
-
     }
 }

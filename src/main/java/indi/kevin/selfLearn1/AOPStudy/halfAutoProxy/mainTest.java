@@ -1,5 +1,6 @@
 package indi.kevin.selfLearn1.AOPStudy.halfAutoProxy;
 
+import indi.kevin.selfLearn1.AOPStudy.interfaces.UserService;
 import org.springframework.context.ApplicationContext;
 import org.springframework.context.support.FileSystemXmlApplicationContext;
 
@@ -13,7 +14,7 @@ public class mainTest {
        //get proxy class
        UserService userService = (UserService) applicationContext.getBean("proxyServiceId");
        userService.addUser();
-       userService.updateUser();
+       userService.updateUser("Kevin");
        userService.deleteUser();
     }
 }
