@@ -1,0 +1,77 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+       xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+       xmlns:p="http://www.springframework.org/schema/p"
+       xmlns:aop="http://www.springframework.org/schema/aop"
+       xmlns:context="http://www.springframework.org/schema/context"
+       xmlns:tx="http://www.springframework.org/schema/tx"
+       xsi:schemaLocation="
+        http://www.springframework.org/schema/beans
+        http://www.springframework.org/schema/beans/spring-beans.xsd
+        http://www.springframework.org/schema/tx
+        http://www.springframework.org/schema/tx/spring-tx.xsd
+        http://www.springframework.org/schema/aop
+        http://www.springframework.org/schema/aop/spring-aop.xsd
+        http://www.springframework.org/schema/context
+        http://www.springframework.org/schema/context/spring-context.xsd"
+        default-autowire="byName">
+
+    <context:property-placeholder location="classpath:jdbcInfo.properties"></context:property-placeholder>
+
+    <bean id="dataSource" class="org.apache.commons.dbcp.BasicDataSource">
+        <property name="driverClassName" value="${jdbc.driverClass}"></property>
+        <property name="url" value="${jdbc.jdbcUrl}"></property>
+        <property name="username" value="${jdbc.username}"></property>
+        <property name="password" value="${jdbc.Password}"></property>
+    </bean>
+    <bean id="txManager" class="org.springframework.jdbc.datasource.DataSourceTransactionManager">
+        <property name="dataSource" ref="dataSource"></property>
+    </bean>
+    <bean id="transactionTemplate" class="org.springframework.transaction.support.TransactionTemplate">
+        <property name="transactionManager" ref="txManager"></property>
+    </bean>
+
+
+    <bean id="accountDao" class="indi.kevin.selfLearn1.Transaction.DAO.AccountDaoImpl">
+        <property name="dataSource" ref="dataSource"></property>
+    </bean>
+    <bean id="accountService" class="indi.kevin.selfLearn1.Transaction.Service.AccountServiceImpl">
+        <property name="accountDAO" ref="accountDao"></property>
+        <property name="transactionTemplate" ref="transactionTemplate"></property>
+    </bean>
+    <bean id="accountServiceBasic" class="indi.kevin.selfLearn1.Transaction.Service.AccountServiceImplBasic">
+        <property name="accountDAO" ref="accountDao"></property>
+    </bean>
+
+    <!--proxy-->
+    <bean id="accountServiceProxy" class="org.springframework.transaction.interceptor.TransactionProxyFactoryBean">
+        <property name="target" ref="accountServiceBasic"></property>
+        <property name="proxyInterfaces" value="indi.kevin.selfLearn1.Transaction.Service.AccountService"></property>
+        <property name="transactionManager" ref="txManager"></property>
+        <property name="transactionAttributes">
+            <props>
+                <prop key="transfer">PROPAGATION_REQUIRED,ISOLATION_DEFAULT,readOnly</prop>
+            </props>
+        </property>
+    </bean>
+
+
+
+    <!--aop-->    <!--tx based on AOP filter point-->
+<!--    <aop:config>
+        <aop:advisor advice-ref="txAdvice" pointcut="execution(* indi.kevin.selfLearn1.Transaction..*.*(..))"></aop:advisor>
+    </aop:config>
+
+    <tx:advice id="txAdvice" transaction-manager="txManager">
+        <tx:attributes>
+            <tx:method name="transfer" propagation="REQUIRED" isolation="DEFAULT"/>
+        </tx:attributes>
+    </tx:advice>-->
+
+
+
+    <!--annotaion based
+    proxy-target-class: true=>use cglib-->
+    <tx:annotation-driven transaction-manager="txManager" proxy-target-class="false"></tx:annotation-driven>
+
+</beans>

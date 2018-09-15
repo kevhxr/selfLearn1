@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+       xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+       xmlns:context="http://www.springframework.org/schema/context"
+       xsi:schemaLocation="http://www.springframework.org/schema/beans
+       http://www.springframework.org/schema/beans/spring-beans.xsd
+       http://www.springframework.org/schema/context
+       http://www.springframework.org/schema/context/spring-context.xsd">
+
+    <context:annotation-config></context:annotation-config>
+    <bean id="user1" class="indi.kevin.selfLearn1.Springbasic.User">
+        <qualifier value="user01"></qualifier>
+        <property name="age" value="22"></property>
+        <property name="userName" value="Kevin"></property>
+    </bean>
+
+   <bean id="user02" class="indi.kevin.selfLearn1.Springbasic.User">
+        <constructor-arg name="age" value="25"></constructor-arg>
+        <constructor-arg name="userName" value="Lisa"></constructor-arg>
+    </bean>
+
+    <bean id="user03" class="indi.kevin.selfLearn1.Springbasic.User" lazy-init="true">
+        <constructor-arg name="age" value="25"></constructor-arg>
+        <constructor-arg name="userName" value="Lisa"></constructor-arg>
+    </bean>
+
+<!--    <bean id="userService" class="indi.kevin.selfLearn1.Springbasic.UserService"
+          autowire="byName"
+        init-method="init"
+    destroy-method="destory">-->
+
+    <bean id="userService" class="indi.kevin.selfLearn1.Springbasic.UserService">
+
+    </bean>
+
+</beans>

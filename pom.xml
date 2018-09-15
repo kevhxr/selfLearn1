@@ -12,7 +12,7 @@
 
     <properties>
         <spring.version>4.2.5.RELEASE</spring.version>
-        <junit.version>3.8.1</junit.version>
+        <junit.version>4.9</junit.version>
         <log4j.version>1.2.17</log4j.version>
         <shade.version>2.4.3</shade.version>
         <jetty.version>9.2.7.v20150116</jetty.version>
@@ -89,7 +89,6 @@
             <groupId>junit</groupId>
             <artifactId>junit</artifactId>
             <version>${junit.version}</version>
-            <scope>test</scope>
         </dependency>
 
         <dependency>
