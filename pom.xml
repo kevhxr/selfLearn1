@@ -14,6 +14,7 @@
         <spring.version>4.2.5.RELEASE</spring.version>
         <junit.version>4.9</junit.version>
         <log4j.version>1.2.17</log4j.version>
+        <slf4j.version>1.7.25</slf4j.version>
         <shade.version>2.4.3</shade.version>
         <jetty.version>9.2.7.v20150116</jetty.version>
         <glassfish.version>2.17</glassfish.version>
@@ -174,6 +175,11 @@
             <version>${log4j.version}</version>
         </dependency>
 
+        <dependency>
+            <groupId>org.slf4j</groupId>
+            <artifactId>slf4j-api</artifactId>
+            <version>${slf4j.version}</version>
+        </dependency>
 
         <dependency>
             <groupId>commons-dbcp</groupId>

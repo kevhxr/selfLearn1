@@ -1,6 +1,7 @@
 package indi.kevin.selfLearn1.JavaBasic;
 
 import com.google.common.base.Stopwatch;
+import org.junit.Test;
 
 import java.io.*;
 import java.nio.Buffer;
@@ -105,5 +106,20 @@ public class CollectionTest {
         }
         stopwatch.stop();
         System.out.println(stopwatch.elapsed(TimeUnit.NANOSECONDS));
+    }
+
+    @Test
+    public void doSort(){
+        int[] array = {9,3,4,7,1};
+        for (int i = array.length; i >0 ; i--) {
+            for (int j = 0; j <i-1 ; j++) {
+                if(array[j+1]<array[j]){
+                    int tmp = array[j];
+                    array[j] = array[j+1];
+                    array[j+1] = tmp;
+                }
+            }
+        }
+        System.out.println(Arrays.toString(array));
     }
 }
