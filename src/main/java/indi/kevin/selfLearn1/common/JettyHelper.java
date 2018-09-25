@@ -5,6 +5,7 @@ import indi.kevin.selfLearn1.restful.endpoints.UserHandler;
 import indi.kevin.selfLearn1.servlets.HelloServlet;
 import org.eclipse.jetty.server.Server;
 import org.eclipse.jetty.server.handler.ContextHandler;
+import org.eclipse.jetty.server.handler.ContextHandlerCollection;
 import org.eclipse.jetty.servlet.ServletHolder;
 import org.glassfish.jersey.servlet.ServletContainer;
 import org.eclipse.jetty.servlet.ServletContextHandler;
@@ -42,7 +43,8 @@ public class JettyHelper {
 
         InetSocketAddress address = new InetSocketAddress(host,Integer.parseInt(port));
         jettyServer = new Server(address);
-
+        ContextHandlerCollection contexts = new ContextHandlerCollection();
+        jettyServer.setHandler(contexts);
 
         ServletContextHandler context = new ServletContextHandler(ServletContextHandler.NO_SESSIONS);
         context.setContextPath("/");
