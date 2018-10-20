@@ -8,6 +8,7 @@ import javax.ws.rs.PathParam;
 import javax.ws.rs.Produces;
 import javax.ws.rs.core.MediaType;
 import org.apache.log4j.Logger;
+import org.springframework.web.bind.annotation.PathVariable;
 
 @Path("/user")
 @Produces(MediaType.TEXT_PLAIN)
