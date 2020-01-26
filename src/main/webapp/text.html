@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>websocket client</title>
+    <script src="text.js">
+    </script>
+</head>
+<body>
+<form onsubmit="return false;">
+    <textarea name="message" style="width: 400px; height: 200px"></textarea>
+
+    <input type="button" value="senddata" onclick="send(this.form.message.value)">
+
+    <h3>server side output: </h3>
+
+    <textarea id="responseText" style="width:400px; height: 300px"></textarea>
+
+    <input type="button" value="clear content"
+           onclick="javascript: document.getElementById('responseText').value=''">
+</form>
+</body>
+</html>
