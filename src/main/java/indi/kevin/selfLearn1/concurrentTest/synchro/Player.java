@@ -44,4 +44,8 @@ public class Player {
     public void setAge(int age) {
         this.age = age;
     }
+
+    public synchronized void doSyncTest(){
+        System.out.println("sad");
+    }
 }
