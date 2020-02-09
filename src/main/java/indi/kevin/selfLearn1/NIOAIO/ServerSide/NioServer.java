@@ -103,7 +103,11 @@ public class NioServer implements Runnable{
             System.out.println("receive data from"+channel.getRemoteAddress()+" client: "+ new String(bytes,"UTF-8"));
             channel.register(selector,SelectionKey.OP_WRITE);
         } catch (IOException e) {
-            e.printStackTrace();
+            try {
+                System.out.println(((SocketChannel) key.channel()).getRemoteAddress()+" close");
+            } catch (IOException e1) {
+                e1.printStackTrace();
+            }
             try {
                 key.channel().close();
                 key.cancel();
