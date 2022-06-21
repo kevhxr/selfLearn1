@@ -19,7 +19,7 @@
         <jetty.version>9.2.7.v20150116</jetty.version>
         <glassfish.version>2.17</glassfish.version>
         <webXml.location>src\main\WEB-INF\web.xml</webXml.location>
-        <mySql.version>5.1.28</mySql.version>
+        <mySql.version>8.0.28</mySql.version>
     </properties>
 
     <build>
