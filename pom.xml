@@ -16,7 +16,7 @@
         <log4j.version>1.2.17</log4j.version>
         <slf4j.version>1.7.25</slf4j.version>
         <shade.version>2.4.3</shade.version>
-        <jetty.version>9.2.7.v20150116</jetty.version>
+        <jetty.version>10.0.10</jetty.version>
         <glassfish.version>2.17</glassfish.version>
         <webXml.location>src\main\WEB-INF\web.xml</webXml.location>
         <mySql.version>5.1.28</mySql.version>
